@@ -1,0 +1,9 @@
+{
+  "name": "codepen-triangles",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.32.8"
+  }
+}
