@@ -1,0 +1,16 @@
+.header{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding-top:2rem;
+	z-index: 2;
+	.name{
+		cursor: pointer;
+		width: 2%;
+	}
+	.nav-logo__flex{
+		display: flex;
+		justify-content: space-between;
+	}
+}

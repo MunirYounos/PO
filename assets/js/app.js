@@ -6,7 +6,7 @@ let size = 16,
     size1 = 17,
     width = window.innerWidth,
     height = window.innerHeight,
-    perspective = height,
+    perspective = 0,
     points = [],
     particles = [],
     noiseLayers = [],
@@ -19,7 +19,7 @@ let size = 16,
         this.xp = x;
         this.yp = y;
         this.zp = z;
-        this.angle = 10 - Math.random() * 10;
+        this.angle =  Math.random() * 10;
         this.x = this.y = this.z = 0;
         this.color = color;
         this.nodes = nodes;
@@ -29,9 +29,9 @@ let size = 16,
 function init() {
     for (var x = 0; x < size; x++) {
         for (var y = 0; y < size; y++) {
-            var xPos = -14000 + x * 2000,
-                zPos = 85 + y * 555,
-                yPos = 500 + Math.random() * 30;
+            var xPos = -5600 + x * 950,
+                zPos = 215 + y * 555,
+                yPos = 600 + Math.random() * 5;
 
             points[y * size1 + x] = new setPoint(xPos, yPos, zPos, [250, 242, 245], [
             ((y + 1) * size1) + x, (y + 1) * size1 + (x + 1), (y * size1) + (x + 1)]);
@@ -55,7 +55,7 @@ function init() {
             for (y = 0; y < height; y++) {
                 if (Math.random() > 0.9) {
                     for (var w = 0; w < 3; w++) {
-                        pix = ((x + w) + y * width) * 4;
+                        pix = ((x + w) + y * width) * 12;
                         nData[pix] = 255;
                         nData[pix + 1] = 255;
                         nData[pix + 2] = 255;
@@ -79,20 +79,20 @@ function render() {
     for (j = size - 1; j >= 0; j--) {
         for (i = 0; i < size; i++) {
             var point = points[j * size1 + i],
-                px = point.xp,
-                py = point.yp * 3,
-                pz = point.zp * 3,
+                px = point.xp * 12,
+                py = point.yp * 126,
+                pz = point.zp * 9,
                 color = point.color,
                 cosY = Math.cos(0.3),
                 sinY = Math.sin(0.3);
 
             // the motion
             points[j * size1 + i].angle += 0.03;
-            points[j * size1 + i].yp += Math.sin(points[j * size1 + i].angle) * 1;
+            points[j * size1 + i].yp += Math.sin(points[j * size1 + i].angle) * 0.4;
 
             scl = perspective / pz;
             point.x = width/2 + px * scl;
-            point.y = py * scl - 90;
+            point.y = py * scl  - (height + 200);
 
             // connects all the points
             bbCtx.beginPath();
@@ -115,19 +115,19 @@ function render() {
                 having to create some actual lighting
             */
 
-            let red = ~~ (color[0] + ((555 - point.yp)) + point.zp * 0.01),
-                green = ~~ (color[0] + ((555- point.yp)) + point.zp * 0.01),
-                blue = ~~ (color[0] + ((555- point.yp)) + point.zp * 0.01);
+            let red = ~~ (color[0] + ((555- point.yp)) + point.zp * 0.01),
+                green = ~~ (color[0] + ((577- point.yp)) + point.zp * 0.01),
+                blue = ~~ (color[0] + ((622- point.yp)) + point.zp * 0.01);
           
 
             bbCtx.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
             bbCtx.fill();
-            bbCtx.strokeStyle = "rgba(155,155,155,0.2)";
+            bbCtx.strokeStyle = "rgba(220,220,220,0.2)";
             bbCtx.stroke();
 
             // creates the points inbetween each connection
             bbCtx.beginPath();
-            bbCtx.arc(point.x, point.y, scl * 12, 0, Math.PI * 2, true);
+            bbCtx.arc(point.x, point.y, scl * 126, 0, Math.PI * 2, true);
             bbCtx.closePath();
             bbCtx.fillStyle = 'rgb(155,155,155)';
             bbCtx.fill();
