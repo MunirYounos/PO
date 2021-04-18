@@ -7,7 +7,13 @@
 	z-index: 2;
 	.name{
 		cursor: pointer;
-		width: 2%;
+		width: 10%;
+		.st0{
+			fill: $wt;
+		}
+		svg{
+			width:20%;
+		}
 	}
 	.nav-logo__flex{
 		display: flex;

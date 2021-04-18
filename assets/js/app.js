@@ -115,21 +115,21 @@ function render() {
                 having to create some actual lighting
             */
 
-            let red = ~~ (color[0] + ((555- point.yp)) + point.zp * 0.01),
-                green = ~~ (color[0] + ((577- point.yp)) + point.zp * 0.01),
-                blue = ~~ (color[0] + ((622- point.yp)) + point.zp * 0.01);
+            let red = ~~ (color[0] + ((233 - point.yp)) + point.zp * 0.01),
+                green = ~~ (color[0] + ((333 - point.yp)) + point.zp * 0.01),
+                blue = ~~ (color[0] + ((433 - point.yp)) + point.zp * 0.01);
           
 
             bbCtx.fillStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
             bbCtx.fill();
-            bbCtx.strokeStyle = "rgba(220,220,220,0.2)";
+            bbCtx.strokeStyle = "rgba(110,110,222,0.1)";
             bbCtx.stroke();
 
             // creates the points inbetween each connection
             bbCtx.beginPath();
             bbCtx.arc(point.x, point.y, scl * 126, 0, Math.PI * 2, true);
             bbCtx.closePath();
-            bbCtx.fillStyle = 'rgb(155,155,155)';
+            bbCtx.fillStyle = 'rgba(111,121,113, 0.1)';
             bbCtx.fill();
             bbCtx.stroke();
 
