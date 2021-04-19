@@ -29,7 +29,7 @@ let size = 16,
 function init() {
     for (var x = 0; x < size; x++) {
         for (var y = 0; y < size; y++) {
-            var xPos = -5600 + x * 950,
+            var xPos = -5800 + x * 950,
                 zPos = 215 + y * 555,
                 yPos = 600 + Math.random() * 5;
 
@@ -164,3 +164,15 @@ setTimeout(function(){
   
   init();
 },100);
+
+
+const toggler = document.querySelector('.toggle-wrap');
+const nav = document.querySelector('.navigation');
+const navItems = document.querySelectorAll('.navigation__item');
+
+toggler.addEventListener('click', (e)=>{
+    nav.classList.toggle('show');
+    navItems.forEach((item) =>{
+        item.classList.toggle('active');
+    })
+})

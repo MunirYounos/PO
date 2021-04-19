@@ -18,6 +18,51 @@
 	.nav-logo__flex{
 		display: flex;
 		justify-content: space-between;
-		padding-right: 2rem;
+	}
+	.toggle-wrap{
+		cursor: pointer;
+		position: absolute;
+		display: block;
+		--line-hight: 0.5px;
+		--line-width: 20px;
+		top:50%;
+		width:30px;
+		height: 30px;
+		padding: 0 1rem;
+		margin-right:1rem;
+		right:0;
+		transform: translateY(-50%);
+		&:hover{
+			.mobile-toggle{
+				width: var(--line-width);
+			}
+		}
+		.mobile-toggle{
+			top: 50%;
+			right: 0;
+			position: absolute;
+			height: var(--line-hight);
+			width: calc(var(--line-width) - 8px);
+			background-color: $wt;
+			transform: translateY(-50%);
+			transition: width 300ms ease;
+			&::before, &::after{
+				content: '';
+				position: absolute;
+				right: 0;
+				height: var(--line-hight);
+				width: var(--line-width);
+				background-color: $wt;
+			}
+			&::before{
+				top: -6px;
+			}
+			&::after{
+				bottom: -6px;
+			}
+		}
+		@include mq(m, min){
+			display: none;
+		}
 	}
 }
