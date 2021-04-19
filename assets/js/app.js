@@ -167,11 +167,13 @@ setTimeout(function(){
 
 
 const toggler = document.querySelector('.toggle-wrap');
-const nav = document.querySelector('.navigation');
+const mobileToggle = document.querySelector('.mobile-toggle');
+const nav = document.querySelector('.header');
 const navItems = document.querySelectorAll('.navigation__item');
 
 toggler.addEventListener('click', (e)=>{
     nav.classList.toggle('show');
+    mobileToggle.classList.toggle('close');
     navItems.forEach((item) =>{
         item.classList.toggle('active');
     })

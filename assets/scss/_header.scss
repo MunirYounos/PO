@@ -65,4 +65,25 @@
 			display: none;
 		}
 	}
+
+	&.show{
+		.navigation{
+			display: block;
+			position: absolute;
+			width: 50%;
+			height: 100vh;
+			background-color: darken($wt, 30%);
+			top:-2rem;
+			right: 0;
+			z-index: 22;
+		}
+		.toggle-wrap{
+			z-index: 33;
+			.mobile-toggle{
+				&.close{
+				background-color: darket($wt,90%);
+				}
+			}
+		}
+	}
 }
