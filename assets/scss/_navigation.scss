@@ -1,5 +1,6 @@
 .navigation{
 	position: relative;
+	transition: transform 350ms ease-in;
 	&__list{
 		list-style: none;
 		display: flex;
@@ -14,8 +15,24 @@
 		text-decoration: none;
 		font-size: .65rem;
 		color:$wt;
+		@include mq(m, max){
+			font-size: 1rem;
+			text-align: left;
+			color:$ltbe;
+		}
 	}
 	@include mq(m, max){
-		display: none;
+			display: block;
+			visibility: hidden;
+			position: absolute;
+			width: 40%;
+			height: 100vh;
+			background-color: darken($wt, 0.5%);
+			top:-2rem;
+			right: 0;
+			transform: translateX(100%);
+			transition: transform 350ms ease-in;
+			z-index: 2;
+
 	}
 }
